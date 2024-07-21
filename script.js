@@ -15,25 +15,27 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if (username.length < 3) {
             isValid = false;
-            messages.push('Incorrect');
+            messages.push('Username must be atleast 4 or more words');
+        }
 
-            if (!email.includes('@') || !email.includes('.')) {
-                isValid = false;
-                messages.push('Email must contain "@" and "."');
+        if (!email.includes('@') || !email.includes('.')) {
+            isValid = false;
+            messages.push('Email must contain "@" and "."');
+        }
+
+        if (password.length < 8) {
+            isValid = false;
+            messages.push('your password must be 8 words long');
+
+            feedbackDiv.style.display = 'block';
+
+            if (isValid) {
+                feedbackDiv.textContent = 'Registration successful!';
+                feedbackDiv.style.color = '#28a745';
+            } else {
+                feedbackDiv.innerHTML = messages.join('<br>');
+                feedbackDiv.style.color = '#dc3545';
             }
-
-            if (password.length < 8) {
-                isValid = false;
-                messages.push('your password must be 8 letters long');
-
-                feedbackDiv.style.display = 'block';
-
-                if (isValid) {
-                    feedbackDiv.textContent = 'Registration successful!';
-                    feedbackDiv.style.color = '#28a745';
-                } else {
-                    feedbackDiv.innerHTML = messages.join('<br>');
-                    feedbackDiv.style.color = '#dc3545';
-                }
-            });
+        }
+    });
 });
